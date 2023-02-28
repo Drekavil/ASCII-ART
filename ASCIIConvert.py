@@ -23,12 +23,13 @@ def pixels_to_ascii(image):
 
 def main(new_width=250):
     #attempt to open image
-    path = input("Enter a valid pathname to an image (all lowercase): \n")
-    try:
-        image = Image.open(path)
-    except:
-        print(path,"No path can be found for that image.")
-        main()
+    while True:
+        path = input("Enter a valid pathname to an image (all lowercase): \n")
+        if(os.path.exists(path)):
+            break
+        
+    #setting variable for image
+    image = Image.open(path)
 
     #convert image to ascii
     new_image_data = pixels_to_ascii(grayify(resize_image(image)))
